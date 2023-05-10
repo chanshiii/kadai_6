@@ -1,0 +1,109 @@
+body {
+  font-family: 'Baskervville', serif,"游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  word-wrap: break-word;
+}
+
+img {
+  width: 100%;
+  height: 0 auto;
+}
+
+/* header */
+.top_container {
+  background-color: #F9F4F0;
+}
+
+.header_title p {
+  text-align: center;
+  font-weight: bold;
+  transform: skewX(-30deg); /* 斜体表示 */
+  letter-spacing: 0.23em;
+  margin: 16px 0 90px;
+}
+
+/* main_title */
+.title_contents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 30px;
+}
+
+.title_text {
+  width: 300px;
+  text-align: center;
+  padding: 0 50px 0 0;
+  animation-name: anim_v;
+}
+
+.title_main {
+  font-size: 4.5rem;
+  margin: 0 auto;
+}
+
+.title_sub_1 {
+  padding: 0 0 30px;
+}
+
+.title_sub_1 {
+  margin: 0;
+}
+
+.title_img {
+  width: 300px;
+  padding: 0 0 0 40px;
+  animation-name: anim_v;
+}
+
+.animation{
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-duration: 1.5s;
+  width: 300px;
+}
+
+
+@keyframes anim_v {
+  0% {
+    transform: translate(0, 0px);
+  }
+  100% {
+    transform: translate(0, 60px);
+  }
+}
+
+
+.start-button {
+  width: 200px;
+  font-size: 2.2rem;
+  text-align: center;
+  padding: 10px 60px;
+  border-radius:30px;
+  margin: 0 auto;
+  border:1px solid #000000;
+  /*アニメーションの指定*/ 
+  transition: all 0.4s ease-out;
+}
+
+.start-button a{
+  text-decoration: none;
+}
+
+.start-button:hover{
+  /*ボタンの形状*/
+    border-color:transparent;
+    color: #fff;
+  /*背景の色と形状*/
+    background: linear-gradient(270deg,#F9F4F0 0%, #bebab7 50%, #5c5a59 100%);
+    background-size: 200% auto;
+    background-position: right center;
+    /*ボックスの影*/   
+    box-shadow: 0 5px 10px rgb(250,108,159,0.4);
+}

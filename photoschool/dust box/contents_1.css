@@ -1,0 +1,9 @@
+
+#imageContainer {
+  width: 500px;
+  height: 500px;
+  background-color: #ddd;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
