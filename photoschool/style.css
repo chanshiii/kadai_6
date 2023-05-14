@@ -87,6 +87,7 @@ img {
   padding: 10px 60px;
   border-radius:30px;
   margin: 0 auto;
+  color: #000000;
   border:1px solid #000000;
   /*アニメーションの指定*/ 
   transition: all 0.4s ease-out;

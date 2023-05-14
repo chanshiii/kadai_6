@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="~カメラマンのがっこう~photo school-ふぉとすく">
+    <meta property="og:title" content="photo school">
+    <link rel="shortcut icon" href="./icon/Photo and Video coverage.png">
+    <link rel="apple-touch-icon-precomposed" href="./icon/Photo and Video coverage.png">
     <link href="https://fonts.googleapis.com/css?family=Baskervville%7CLa+Belle+Aurore&amp;display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>photo school TOP</title>
     <link rel="stylesheet" href="./style.css">
     <script src="./js/jquery-3.6.0.min.js"></script>
 </head>
@@ -27,11 +31,45 @@
                 <img src="./icon/title_contens.png" alt="">
             </div>
         </div>
-
-        <div class="start-button">
-            <a href="./wood-three.js-portfolio/index.html">入学する</a>
+        
+        <!-- クリック時に音がならない -->
+        
+        <audio id="start-btn" src="../photoschool/audio/start-button.wav" type="audio/mpeg"></audio>
+        <div class="start-button" id="start-button">
+            <a href="./wood-three.js-portfolio/main.html">入学する</a>
         </div>
+
+        <!-- <audio id="start-btn" src="../photoschool/audio/start-button.wav"></audio>
+        <div class="start-button" id="start-button">
+            <a href="#"  onclick="document.getElementById('start-btn').play();">入学する</a>
+        </div> -->
+        
+        <audio autoplay id="audio_autoplay">
+        <source src="../photoschool/audio/voice.wav" type="audio/mpeg">
+        </audio>
+        <!-- ループ用 -->
+        <!-- <audio autoplay loop id="audio_autoplay">
+        <source src="../photoschool/audio/voice.wav" type="audio/mpeg">
+        </audio> -->
     </main>
+
+    <script>
+    window.addEventListener('load', function() {
+    var audio = $("#audio_autoplay").get(0);
+    audio.play();
+});
+
+//     var st_btn = $("#start-btn")
+//     $("#start-button").on("click", function() {
+//     event.preventDefault();
+//     st_btn.trigger("click");
+//     st_btn.load();
+//     st_btn.play();
+//     setTimeout(function() {
+//     window.location.href = $("#start-button a").attr("href");}, 500);
+// });// 500ミリ秒後に移動するように指定
+
+    </script>
 </body>
 </html>
 

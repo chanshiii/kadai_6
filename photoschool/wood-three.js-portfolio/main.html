@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="~カメラマンのがっこう~photo school-ふぉとすく">
+    <meta property="og:title" content="photo school">
+    <link rel="shortcut icon" href="../icon/Photo and Video coverage.png">
+    <link rel="apple-touch-icon-precomposed" href="../icon/Photo and Video coverage.png">
+    <title>photo school Game</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="../js/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div class="title" id="title">
+      <h1>photo school ふぉとすく</h1>
+      <h3>~カメラマンのがっこう~</h3>
+    </div>
+    <div class="select_btn">
+      <button id="tree_add" class="tree_add"><img src="../img/TREE.png" alt="TREE"></button>
+      <button id="cloud_add" class="cloud_add"><img src="../img/CLOUD.png" alt="CLOUD"></button>
+    <select name="light" id="light_select" class="light_select">
+      <option value="none">light_select</option>
+      <option value="ambientLight" id="ambientLight">AmbientLight</option>
+      <option value="directionalLight" id="directionalLight">DirectionalLight</option>
+      <option value="hemisphereLight" id="hemisphereLight">HemisphereLight</option>
+      <option value="pointLight" id="pointLight">PointLight</option>
+      <option value="rectAreaLight" id="rectAreaLight">RectAreaLight</option>
+      <option value="spotLight" id="spotLight">SpotLight</option>
+    </select>
+    <button id="scshot" class="scshot"><img src="../img/camera_shot.png" alt="camera"></button>
+    </div>
+
+    <script src="https://unpkg.com/three@0.142.0/build/three.min.js"></script> <!-- three.js CDN  -->
+    <script src="https://unpkg.com/three@0.142.0/examples/js/controls/OrbitControls.js"></script> <!-- OrbitControls CDN  -->
+    <script type="module" src="https://unpkg.com/three@0.126.1/examples/jsm/loaders/FBXLoader.js"></script>  <!-- FBXLoader CDN  -->
+    <script src="./main.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r125/examples/js/loaders/GLTFLoader.js"></script>
+
+    <script>
+      $("#title").fadeOut(3000);
+    </script>
+  </body>
+</html>

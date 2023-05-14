@@ -28,8 +28,86 @@ body {
   text-shadow: 0px 4px 10px #000000;
 }
 
-#tree_add {
+/* ボタンを囲む線が表示されない */
+.select_btn {
+  border: 2px solid #ffffff;
+  background-color: #ffffff;
+}
+
+.tree_add img{
   position: absolute;
-  top: 50;
-  left: 50;
+  left:10px;
+  width: 50px;
+  bottom: 0px;
+  /* font-size: 1.2rem;
+  background-color: brown;
+  color: #ffffff; */
+  border-radius: 20%;
+}
+.cloud_add img{
+  position: absolute;
+  left:80px;
+  width: 50px;
+  bottom: 0px;
+  /* font-size: 1.2rem;
+  background-color: brown;
+  color: #ffffff; */
+  border-radius: 20%;
+}
+.light_select{
+  position: absolute;
+  left:140px;
+  width: 70px;
+  bottom: 0px;
+  font-size: 1.2rem;
+  background-color: rgb(132, 128, 34);
+  color: #ffffff;
+  border-radius: 20%;;
+}
+
+.scshot img{
+  position: absolute;
+  left:220px;
+  bottom: 0px;
+  width: 50px;
+  /* font-size: 1.2rem;
+  background-color: rgb(26, 26, 5);
+  color: #ffffff; */
+  border-radius: 20%;
+}
+
+/* スクリーンショットの確認ボタン */
+#confirmation-dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.save_btn {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #000000;
+  width: 200px;
+  background-color: cadetblue;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 20px auto;
+}
+
+#confirm-button, #cancel-button{
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #000000;
+  width: 200px;
+  background-color: cadetblue;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 0 0 10px;
+}
+
+#confirm-button #cancel-button:hover {
+  color: #1619de;
+  background-color: #FFF4E1;
 }
