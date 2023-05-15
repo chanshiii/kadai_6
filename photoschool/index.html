@@ -34,10 +34,14 @@
         
         <!-- クリック時に音がならない -->
         
-        <audio id="start-btn" src="../photoschool/audio/start-button.wav" type="audio/mpeg"></audio>
-        <div class="start-button" id="start-button">
-            <a href="./wood-three.js-portfolio/main.html">入学する</a>
+        
+        <div class="start-button" id="start-button" onclick="audio()">
+            <a href="./photo_game/main.html">入学する</a>
+        <audio id="start-btn">
+            <source src="../photoschool/audio/start-button.wav" type="audio/mpeg">
+        </audio>
         </div>
+        
 
         <!-- <audio id="start-btn" src="../photoschool/audio/start-button.wav"></audio>
         <div class="start-button" id="start-button">
@@ -58,30 +62,19 @@
     var audio = $("#audio_autoplay").get(0);
     audio.play();
 });
+    // function audio(){
+    //     $("#start-btn").currentTime = 0;     //連続クリックに対応
+    //     $("#start_btn").paly(); //クリックしたら音を再生
+    // }
 
-//     var st_btn = $("#start-btn")
-//     $("#start-button").on("click", function() {
-//     event.preventDefault();
-//     st_btn.trigger("click");
-//     st_btn.load();
-//     st_btn.play();
-//     setTimeout(function() {
-//     window.location.href = $("#start-button a").attr("href");}, 500);
-// });// 500ミリ秒後に移動するように指定
-
+    function audio() {
+  var audio = $('#start-btn')[0];
+  audio.currentTime = 0; // オーディオ再生位置をリセット
+  audio.play();  //オーディオを再生
+  setTimeout(function() {
+    window.location.href = './photo_game/main.html';
+  }, audio.duration * 1000); //指定した再生時間
+}
     </script>
 </body>
 </html>
-
-<!-- to do 5/10-->
-<!-- 
-    1.画像が停止したときに、構図の選択ボタンが表示されるようにする
-    ただし、複数の構図が含まれるときは複数選択することができる。
-    2.多分、画像1枚ずつに対して、if文とかで条件式を書く
-    3.上記のif文内で〇罰を書く？
-    4.mapにある特定の場所を選択後、その場所の写真が参照できるツールを作成
-    5.可能であれば、ランダムに表示される画像は、ローカルフォルダを参照するのではなく、一つのwebsiteから引用できるようにしたい。
-    6.Canvaで作成したものとVscodeで記述したのを同のように合わせるのか。
-    7　js　ボタンを押したときに...を$("#id名").on("click", function())で記載したいが、これで記述すると機能しない。
-    c2023 Chanshi_Chanssie All Rights Reserved.
- -->

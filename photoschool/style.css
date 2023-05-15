@@ -75,7 +75,7 @@ img {
     transform: translate(0, 0px);
   }
   100% {
-    transform: translate(0, 60px);
+    transform: translate(0, 50px);
   }
 }
 
@@ -95,6 +95,7 @@ img {
 
 .start-button a{
   text-decoration: none;
+  color: #000000;
 }
 
 .start-button:hover{

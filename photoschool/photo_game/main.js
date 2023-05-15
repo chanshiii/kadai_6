@@ -245,7 +245,7 @@ lightSelect.on("change", function () {
 const fog = new THREE.Fog("#262837", 50, 7);
 scene.fog = fog;
 
-// controls
+// controls 滑らかにカメラの制御をする
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping =true; //慣性をつけて動かす宣言
 
@@ -279,5 +279,33 @@ window.addEventListener("resize", () => {
 
 //人物作成 // モデルの読み込み
 //fbxファイルの読み込み
+// gltfLoader.load("../3d/human.glb", (glb) => {
+//   // 読み込んだ3Dモデルのサイズや座標を調整する処理を必要に応じて書く
+//   glb.scene.scale.set(0.8, 0.8, 0.8);
+//   glb.scene.position.set(6, -3, 0);
+//   glb.scene.rotation.set(0, 0, 0.8);
+//   // シーンに追加
+//   scene.add(glb.scene);
+// });  
+
+// 非同期処理で待機するのでasync function宣言とする
+
+async function init() {
+  // ･･･省略
+  $("#human_add").on("click", async function () {
+    // GLTF形式のモデルデータを読み込む
+    const loader = new THREE.GLTFLoader();
+    // GLTFファイルのパスを指定
+    const gltf = await loader.loadAsync("../3d/human.glb"); // awaitを追加 awaitキーワードは、非同期処理が完了まで待機
+    // 読み込み後に3D空間に追加
+    const model = gltf.scene.children[0];
+    model.scale.set(5.8, 5.8, 5.8);
+    model.position.set(0, 0, 0);
+    model.rotation.set(0, 0, 0.8);
+    scene.add(model);
+    console.log(model);
+    // ･･･省略
+  });
+}
 
 animate();

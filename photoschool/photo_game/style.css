@@ -76,6 +76,17 @@ body {
   border-radius: 20%;
 }
 
+.human_add {
+  position: absolute;
+  left:280px;
+  bottom: 0px;
+  width: 70px;
+  font-size: 1.2rem;
+  background-color: rgb(8, 101, 98);
+  color: #ffffff;
+  border-radius: 20%;
+}
+
 /* スクリーンショットの確認ボタン */
 #confirmation-dialog {
   position: absolute;
