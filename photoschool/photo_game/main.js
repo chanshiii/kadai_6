@@ -36,6 +36,7 @@ camera.updateProjectionMatrix(); // カメラの投影行列を更新します
 
 // マウスホイールのイベントリスナーを追加します
 window.addEventListener('wheel', (event) => {
+  // deltaY プロパティは、マウスホイールのスクロールした上下量を返す。上スクロール：正の値、下スクロール：負の値。
   const delta = event.deltaY; // マウスホイールの変化量
   const zoomSpeed = 0.01; // ズーム速度の調整値
 
