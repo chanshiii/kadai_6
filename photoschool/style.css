@@ -19,6 +19,11 @@ img {
   background-color: #F9F4F0;
 }
 
+.header_title a {
+  text-decoration: none;
+  color: #000000;
+}
+
 .header_title p {
   text-align: center;
   font-weight: bold;

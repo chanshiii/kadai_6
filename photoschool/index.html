@@ -15,8 +15,11 @@
 </head>
 <body class="top_container">
     <header>
-        <div class="header_title">
+        <!-- <div class="header_title">
             <p>supported by<br> Chanshi_Chanssie</p>
+        </div> -->
+        <div class="header_title" >
+            <a href="../a-frame/a-frame.html"><p>supported by<br> Chanshi_Chanssie</p></a>
         </div>
     </header>
 
@@ -69,6 +72,21 @@
 //     let audio = $("#audio_autoplay").get(0);
 //     audio.play();
 // });
+    function audio() {
+    let audio = $('#start-btn')[0]; //[0]はaudioに要素を何個も持たせることができるので[0]と指定が必要。
+    let sources = audio.getElementsByTagName('source'); //sourceの名前を取得
+    let randomIndex = Math.floor(Math.random() * sources.length); //sourceの長さ分ランダムで出力する
+    console.log(randomIndex); //デバック用
+    let randomSource = sources[randomIndex].src;  //sourcesの要素を監視して、.src属性にアクセスし値を取得。
+
+    audio.src = randomSource;
+    audio.play(); //オーディオを再生
+    setTimeout(function() {
+        window.location.href = './photo_game/main.html';
+    }, 1000); //指定した再生時間 
+}
+
+
     window.addEventListener('load', function() {
     let audio = $("#audio_autoplay")[0];
     let sources = audio.getElementsByTagName('source'); //sourceの名前を取得

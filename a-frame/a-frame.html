@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./a-frame.css">
+    <title>AR A-frame</title><!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./a-frame.css">
+    <title>AR A-frame</title>
+</head>
+<body>
+    <!-- A-Frameライブラリの読み込み -->
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <!-- AR.js ライブラリの読み込み -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <!-- A-Frame の VR空間に AR.js を紐づける（デバッグUIを非表示）vr-mode-ui="enable: false":VRの文字を非表示にする -->
+    <a-scene embedded arjs="patternRatio:0.50;" vr-mode-ui="enable: false">
+        <!-- マーカーを登録（プリセットされている「hiro」マーカー） -->
+        <!-- <a-marker preset="hiro"> -->
+        <!-- orignal -->
+        <a-marker-camera type='pattern' url='./pattern-Photo and Video coverage.patt'>
+        <!-- マーカーの場所に箱を置く（見やすいようにワイヤーフレーム表示） -->
+        <!-- <a-box position="0 0.5 0" wirefram="true"></a-box> -->
+        <a-img id="profile" width="1" height="1" position="0 0 0" src="./pattern-Photo and Video coverage.png" link=""></a-img>
+        </a-marker-camera>
+    <!-- AR用のカメラを置く -->
+    <a-entity camera cursor="fuse:false; rayOrigin: mouse;"></a-entity>
+    </a-scene>
+</body>
+</html>

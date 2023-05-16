@@ -300,7 +300,7 @@ window.addEventListener("resize", () => {
 //人物作成 // モデルの読み込み
 //fbxファイルの読み込み
 // async 
-function humanAdd(add_contents, add_src) {
+function humanAdd(add_contents, add_src,x,y,z) {
   $(add_contents).on("click", async function () {
     // GLTF形式のモデルデータを読み込む
     const loader = new THREE.GLTFLoader();
@@ -313,7 +313,7 @@ function humanAdd(add_contents, add_src) {
     const model = glbf.scene.children[0];
     model.position.x = (Math.random() * 2 - 1) * 180;
     model.position.z = (Math.random() - 0.5) * 400;
-    // model.scale.set(1.01,1.01, 1.01);
+    model.scale.set(x,y, z);
     // model.position.set(0, 0, 0);
     // model.rotation.set(0, 0, 0.8);
     scene.add(model);
@@ -335,63 +335,8 @@ function humanAdd(add_contents, add_src) {
   });
 }
 
-humanAdd("#human_add","../3d/human.glb");
-humanAdd("#human_add","../3d/pokemon_color_1.glb");
-
-// BulbasaurAdd();
-//Bulbasaur追加
-// function BulbasaurAdd() {
-//   $("#Bulbasaur_add").on("click", async function () {
-//     // GLTF形式のモデルデータを読み込む
-//     const loader = new THREE.GLTFLoader();
-//     let mixer;
-//     // GLTFファイルのパスを指定
-//     const glbf = await loader.loadAsync('../3d/pokemon_color_1.glb'); // awaitを追加 awaitキーワードは、非同期処理が完了まで待機
-//     // 読み込み後に3D空間に追加
-//     // glbf.scene.children[0]の配列番号があるのは、sceneというものが何個もあるので、配列で持たせている。今回は配列でまとめていないので0でOK。
-//     //.childrenとはそもそも子要素を意味するので配列要素の指定が必要。
-//     const model = glbf.scene.children[0];
-//     model.position.x = (Math.random() * 2 - 1) * 180;
-//     model.position.z = (Math.random() - 0.5) * 400;
-//     // model.scale.set(1.01,1.01, 1.01);
-//     // model.position.set(0, 0, 0);
-//     // model.rotation.set(0, 0, 0.8);
-//     scene.add(model);
-//     // 上記まではモデルを参照してランダムに配置
-//     // 書きは作成したモデルの動きを追加
-//     // Animation
-//         let animations = glbf.animations;
-//         mixer = new THREE.AnimationMixer(model);
-//         let action = mixer.clipAction(animations[0]);
-//         action.play()
-
-//         function animate() {
-//         if (mixer) mixer.update(0.017);
- 
-//         renderer.render(scene, camera);
-//         requestAnimationFrame(animate);
-//     }
-//     animate();
-//   });
-// }
-// 上記のコードhumanAddを実行
-// BulbasaurAdd();
-
-// function humanAdd() {
-//   $("#human_add").on("click", async function () {
-//     // GLTF形式のモデルデータを読み込む
-//     const loader = new THREE.GLTFLoader();
-//     // GLTFファイルのパスを指定
-//     const glbf = await loader.loadAsync('../3d/human.glb'); // awaitを追加 awaitキーワードは、非同期処理が完了まで待機
-//     // 読み込み後に3D空間に追加
-//     const model = glbf.scene.children[0];
-//     model.scale.set(0.01,0.01, 0.01);
-//     model.position.set(0, 0, 0);
-//     model.rotation.set(0, 0, 0.8);
-//     scene.add(model);
-//   });
-// }
-// humanAdd();
+humanAdd("#human_add","../3d/human.glb",0.01,0.01,0.01); //人間追加
+humanAdd("#human_add","../3d/pokemon_color_1.glb",5,5,5); //フシギダネ追加
 
 // ランダムにボタンを押すたびに人を追加
 // function humanAdd() {
@@ -411,32 +356,4 @@ humanAdd("#human_add","../3d/pokemon_color_1.glb");
 //   });
 // }
 // humanAdd();
-
-// const loader = new FBXLoader();
-    
-//         loader.load( '../3d/human.glb', function ( object ) {
-//             object.scale.set(1, 1, 1)
-//             //シーン内の特定のオブジェクトのアニメーション用のプレーヤー(アニメーションの調整)
-//             mixer = new THREE.AnimationMixer( object );
-            
-//             //Animation Actionを生成
-//             const action = mixer.clipAction( object.animations[ 0 ] );
- 
-//             //ループ設定（1回のみ）
-//             //action.setLoop(THREE.LoopOnce);
- 
-//             //アニメーションを再生する
-//             action.play();
- 
-//             //オブジェクトとすべての子孫に対してコールバックを実行
-//             object.traverse((child)=>{
-//                 //影を落とすメッシュに対して、Shadowプロパティーを有効
-//                 if(child.isMesh){
-//                     child.castShadow = true;
-//                     child.receiveShadow = true;
-//                 }
-//             });
-//             scene.add( object );
-     
-//         });
 animate();
