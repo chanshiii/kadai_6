@@ -242,8 +242,8 @@ lightSelect.on("change", function () {
 // scene.add(directionalLight);
 
 //fog 霧作成
-const fog = new THREE.Fog("#262837", 50, 7);
-scene.fog = fog;
+// const fog = new THREE.Fog("#262837", 50, 7);
+// scene.fog = fog;
 
 // controls 滑らかにカメラの制御をする
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -279,33 +279,102 @@ window.addEventListener("resize", () => {
 
 //人物作成 // モデルの読み込み
 //fbxファイルの読み込み
-// gltfLoader.load("../3d/human.glb", (glb) => {
-//   // 読み込んだ3Dモデルのサイズや座標を調整する処理を必要に応じて書く
-//   glb.scene.scale.set(0.8, 0.8, 0.8);
-//   glb.scene.position.set(6, -3, 0);
-//   glb.scene.rotation.set(0, 0, 0.8);
-//   // シーンに追加
-//   scene.add(glb.scene);
-// });  
-
-// 非同期処理で待機するのでasync function宣言とする
-
-async function init() {
-  // ･･･省略
+// async 
+function humanAdd() {
   $("#human_add").on("click", async function () {
     // GLTF形式のモデルデータを読み込む
     const loader = new THREE.GLTFLoader();
+    let mixer;
     // GLTFファイルのパスを指定
-    const gltf = await loader.loadAsync("../3d/human.glb"); // awaitを追加 awaitキーワードは、非同期処理が完了まで待機
+    const glbf = await loader.loadAsync('../3d/human.glb'); // awaitを追加 awaitキーワードは、非同期処理が完了まで待機
     // 読み込み後に3D空間に追加
-    const model = gltf.scene.children[0];
-    model.scale.set(5.8, 5.8, 5.8);
-    model.position.set(0, 0, 0);
-    model.rotation.set(0, 0, 0.8);
+    const model = glbf.scene.children[0];
+    model.position.x = (Math.random() * 2 - 1) * 180;
+    model.position.z = (Math.random() - 0.5) * 400;
+    // model.scale.set(0.01,0.01, 0.01);
+    // model.position.set(0, 0, 0);
+    // model.rotation.set(0, 0, 0.8);
     scene.add(model);
-    console.log(model);
-    // ･･･省略
+    // 上記まではモデルを参照してランダムに配置
+    // 書きは作成したモデルの動きを追加
+    // Animation
+        let animations = glbf.animations;
+        mixer = new THREE.AnimationMixer(model);
+        let action = mixer.clipAction(animations[0]);
+        action.play()
+
+        function animate() {
+        if (mixer) mixer.update(0.017);
+ 
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+    }
+    animate();
   });
 }
+    
+humanAdd();
 
+// function humanAdd() {
+//   $("#human_add").on("click", async function () {
+//     // GLTF形式のモデルデータを読み込む
+//     const loader = new THREE.GLTFLoader();
+//     // GLTFファイルのパスを指定
+//     const glbf = await loader.loadAsync('../3d/human.glb'); // awaitを追加 awaitキーワードは、非同期処理が完了まで待機
+//     // 読み込み後に3D空間に追加
+//     const model = glbf.scene.children[0];
+//     model.scale.set(0.01,0.01, 0.01);
+//     model.position.set(0, 0, 0);
+//     model.rotation.set(0, 0, 0.8);
+//     scene.add(model);
+//   });
+// }
+// humanAdd();
+
+// ランダムにボタンを押すたびに人を追加
+// function humanAdd() {
+//   $("#human_add").on("click", async function () {
+//     const numHumanToAdd = 5; // 生成する木の数
+//     for (let i = 0; i < numHumanToAdd; i++) {
+//     // GLTF形式のモデルデータを読み込む
+//     const loader = new THREE.GLTFLoader();
+//     // GLTFファイルのパスを指定
+//     const glbf = await loader.loadAsync('../3d/human.glb'); // awaitを追加 awaitキーワードは、非同期処理が完了まで待機
+//     // 読み込み後に3D空間に追加
+//     const model = glbf.scene.children[0];
+//     model.position.x = (Math.random() * 2 - 1) * 180;
+//     model.position.z = (Math.random() - 0.5) * 400;
+//     scene.add(model);
+//     }
+//   });
+// }
+// humanAdd();
+
+// const loader = new FBXLoader();
+    
+//         loader.load( '../3d/human.glb', function ( object ) {
+//             object.scale.set(1, 1, 1)
+//             //シーン内の特定のオブジェクトのアニメーション用のプレーヤー(アニメーションの調整)
+//             mixer = new THREE.AnimationMixer( object );
+            
+//             //Animation Actionを生成
+//             const action = mixer.clipAction( object.animations[ 0 ] );
+ 
+//             //ループ設定（1回のみ）
+//             //action.setLoop(THREE.LoopOnce);
+ 
+//             //アニメーションを再生する
+//             action.play();
+ 
+//             //オブジェクトとすべての子孫に対してコールバックを実行
+//             object.traverse((child)=>{
+//                 //影を落とすメッシュに対して、Shadowプロパティーを有効
+//                 if(child.isMesh){
+//                     child.castShadow = true;
+//                     child.receiveShadow = true;
+//                 }
+//             });
+//             scene.add( object );
+     
+//         });
 animate();
