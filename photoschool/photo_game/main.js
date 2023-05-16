@@ -274,8 +274,8 @@ function animate(){
   // console.log(elapsedTime);
   // camera update
   // 回転させたいときはx,z軸平面を触る 手前がZ座標で原点の0を中心に回っている
-  camera.position.x = Math.cos(Math.PI * elapsedTime * 0.055) * 20; //周期の速度は0.15の部分
-  camera.position.z = Math.sin(Math.PI * elapsedTime * 0.055) * 20;
+  camera.position.x = Math.cos(Math.PI * elapsedTime * 0.025) * 20; //周期の速度は0.15の部分
+  camera.position.z = Math.sin(Math.PI * elapsedTime * 0.025) * 20;
   // 下記のz軸を0→50にしてカメラの設置位置を原点から後方にすることができた。
   camera.lookAt(0, 3, 50); //カメラの向きをy軸方向に向ける宣言
 
@@ -300,13 +300,13 @@ window.addEventListener("resize", () => {
 //人物作成 // モデルの読み込み
 //fbxファイルの読み込み
 // async 
-function humanAdd() {
-  $("#human_add").on("click", async function () {
+function humanAdd(add_contents, add_src) {
+  $(add_contents).on("click", async function () {
     // GLTF形式のモデルデータを読み込む
     const loader = new THREE.GLTFLoader();
     let mixer;
     // GLTFファイルのパスを指定
-    const glbf = await loader.loadAsync('../3d/human.glb'); // awaitを追加 awaitキーワードは、非同期処理が完了まで待機
+    const glbf = await loader.loadAsync(add_src); // awaitを追加 awaitキーワードは、非同期処理が完了まで待機
     // 読み込み後に3D空間に追加
     // glbf.scene.children[0]の配列番号があるのは、sceneというものが何個もあるので、配列で持たせている。今回は配列でまとめていないので0でOK。
     //.childrenとはそもそも子要素を意味するので配列要素の指定が必要。
@@ -334,8 +334,48 @@ function humanAdd() {
     animate();
   });
 }
+
+humanAdd("#human_add","../3d/human.glb");
+humanAdd("#human_add","../3d/pokemon_color_1.glb");
+
+// BulbasaurAdd();
+//Bulbasaur追加
+// function BulbasaurAdd() {
+//   $("#Bulbasaur_add").on("click", async function () {
+//     // GLTF形式のモデルデータを読み込む
+//     const loader = new THREE.GLTFLoader();
+//     let mixer;
+//     // GLTFファイルのパスを指定
+//     const glbf = await loader.loadAsync('../3d/pokemon_color_1.glb'); // awaitを追加 awaitキーワードは、非同期処理が完了まで待機
+//     // 読み込み後に3D空間に追加
+//     // glbf.scene.children[0]の配列番号があるのは、sceneというものが何個もあるので、配列で持たせている。今回は配列でまとめていないので0でOK。
+//     //.childrenとはそもそも子要素を意味するので配列要素の指定が必要。
+//     const model = glbf.scene.children[0];
+//     model.position.x = (Math.random() * 2 - 1) * 180;
+//     model.position.z = (Math.random() - 0.5) * 400;
+//     // model.scale.set(1.01,1.01, 1.01);
+//     // model.position.set(0, 0, 0);
+//     // model.rotation.set(0, 0, 0.8);
+//     scene.add(model);
+//     // 上記まではモデルを参照してランダムに配置
+//     // 書きは作成したモデルの動きを追加
+//     // Animation
+//         let animations = glbf.animations;
+//         mixer = new THREE.AnimationMixer(model);
+//         let action = mixer.clipAction(animations[0]);
+//         action.play()
+
+//         function animate() {
+//         if (mixer) mixer.update(0.017);
+ 
+//         renderer.render(scene, camera);
+//         requestAnimationFrame(animate);
+//     }
+//     animate();
+//   });
+// }
 // 上記のコードhumanAddを実行
-humanAdd();
+// BulbasaurAdd();
 
 // function humanAdd() {
 //   $("#human_add").on("click", async function () {
