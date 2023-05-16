@@ -23,14 +23,31 @@ const sizes = {
 // aspect:カメラのアスペクト比を表す数値。画面の幅と高さの比率。ここでは、sizes.widthをsizes.heightで割った値が使用されています。
 // near:カメラの手前にあるオブジェクトが描画される距離を表す数値。この値より手前にあるオブジェクトは描画されません。
 // far:カメラから遠ざかっているオブジェクトが描画される距離を表す数値。この値より遠くにあるオブジェクトは描画されません。
-const camera = new THREE.PerspectiveCamera(
-  75, //fov 今回は広角レンズ、望遠カメラにするには視野角を狭くする(例えば数値を30deg)
-  sizes.width / sizes.height, //aspect
-  0.1, //near
-  1000 //far
-);
+// const camera = new THREE.PerspectiveCamera(
+//   75, //fov 今回は広角レンズ、望遠カメラにするには視野角を狭くする(例えば数値を30deg)
+//   sizes.width / sizes.height, //aspect
+//   0.1, //near
+//   1000 //far
+// );
 
-camera.position.set(0, 3, 65);
+const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 1000);
+camera.zoom = 2; // ズーム倍率を設定します（2倍に拡大）
+camera.updateProjectionMatrix(); // カメラの投影行列を更新します
+
+// マウスホイールのイベントリスナーを追加します
+window.addEventListener('wheel', (event) => {
+  const delta = event.deltaY; // マウスホイールの変化量
+  const zoomSpeed = 0.01; // ズーム速度の調整値
+
+  // マウスホイールの変化量に応じてズーム倍率を調整します
+  camera.zoom += delta * zoomSpeed;
+
+  // ズーム倍率の範囲を制限します（最小値を1未満にしない）
+  camera.zoom = Math.max(camera.zoom, 1);
+
+  camera.updateProjectionMatrix(); // カメラの投影行列を更新します
+});
+
 
 // renderer
 const renderer = new THREE.WebGLRenderer();
@@ -256,15 +273,17 @@ function animate(){
   // console.log(elapsedTime);
   // camera update
   // 回転させたいときはx,z軸平面を触る 手前がZ座標で原点の0を中心に回っている
-  camera.position.x = Math.cos(Math.PI * elapsedTime * 0.05) * 20; //周期の速度は0.15の部分
-  camera.position.z = Math.sin(Math.PI * elapsedTime * 0.05) * 20;
-  camera.lookAt(0, 3, 0); //カメラの向きをy軸方向に向ける宣言
+  camera.position.x = Math.cos(Math.PI * elapsedTime * 0.055) * 20; //周期の速度は0.15の部分
+  camera.position.z = Math.sin(Math.PI * elapsedTime * 0.055) * 20;
+  // 下記のz軸を0→50にしてカメラの設置位置を原点から後方にすることができた。
+  camera.lookAt(0, 3, 50); //カメラの向きをy軸方向に向ける宣言
 
   controls.update();
   // シーンを描画する
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
 }
+
 
 // サイズを変えたときの更新時の記述？
 window.addEventListener("resize", () => {
@@ -288,10 +307,12 @@ function humanAdd() {
     // GLTFファイルのパスを指定
     const glbf = await loader.loadAsync('../3d/human.glb'); // awaitを追加 awaitキーワードは、非同期処理が完了まで待機
     // 読み込み後に3D空間に追加
+    // glbf.scene.children[0]の配列番号があるのは、sceneというものが何個もあるので、配列で持たせている。今回は配列でまとめていないので0でOK。
+    //.childrenとはそもそも子要素を意味するので配列要素の指定が必要。
     const model = glbf.scene.children[0];
     model.position.x = (Math.random() * 2 - 1) * 180;
     model.position.z = (Math.random() - 0.5) * 400;
-    // model.scale.set(0.01,0.01, 0.01);
+    // model.scale.set(1.01,1.01, 1.01);
     // model.position.set(0, 0, 0);
     // model.rotation.set(0, 0, 0.8);
     scene.add(model);
@@ -312,7 +333,7 @@ function humanAdd() {
     animate();
   });
 }
-    
+// 上記のコードhumanAddを実行
 humanAdd();
 
 // function humanAdd() {

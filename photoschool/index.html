@@ -32,16 +32,13 @@
             </div>
         </div>
         
-        <!-- クリック時に音がならない -->
-        
-        
+        <!-- aリンクを使用して入学するを囲んだ場合、JSで「再生」→「ページ移行」と制御しても先にページ移行が行われ、クリック時に音がなる前にぺージが移動してしまう -->
         <div class="start-button" id="start-button" onclick="audio()">
-            <a href="./photo_game/main.html">入学する</a>
+            入学する
         <audio id="start-btn">
             <source src="../photoschool/audio/start-button.wav" type="audio/mpeg">
         </audio>
         </div>
-        
 
         <!-- <audio id="start-btn" src="../photoschool/audio/start-button.wav"></audio>
         <div class="start-button" id="start-button">
@@ -68,12 +65,12 @@
     // }
 
     function audio() {
-  var audio = $('#start-btn')[0];
-  audio.currentTime = 0; // オーディオ再生位置をリセット
+  let audio = $('#start-btn')[0];  //[0]はaudioに要素を何個も持たせることができるので[0]と指定が必要。
+//   audio.currentTime = 0; // オーディオ再生位置をリセット
   audio.play();  //オーディオを再生
   setTimeout(function() {
     window.location.href = './photo_game/main.html';
-  }, audio.duration * 2000); //指定した再生時間
+  }, 1000); //指定した再生時間
 }
     </script>
 </body>
