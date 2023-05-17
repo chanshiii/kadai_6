@@ -1,0 +1,50 @@
+body {
+  font-family: 'Baskervville', serif,"游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  word-wrap: break-word;
+}
+
+
+
+
+/* header */
+.login_continer {
+  background-image: url(../photoschool/img/5.jpg);
+  background-size: cover;
+}
+
+.title_text {
+    padding: 80px 0 30px 200px;
+}
+.title_text p{
+    font-weight: bold;
+    color: #ffffff;
+}
+.title_text h1{
+    font-weight: bold;
+    font-size: 50px;
+    color: #ffffff;
+}
+
+.login_auth {
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0 0 0 200px;
+}
+
+.login {
+    padding: 80px 0 200px 200px;
+}
+
+.login_btn {
+  font-size: 50px;
+  color: #ffffff;
+  font-weight: bold;
+  letter-spacing: 0.5em;
+}

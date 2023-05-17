@@ -116,6 +116,7 @@ $("#scshot").on("click", function () {
   });
 });
 
+
 // road 地面の作成
 const roadMaterial = new THREE.MeshStandardMaterial({
   color : "gray",
@@ -300,8 +301,10 @@ window.addEventListener("resize", () => {
 //人物作成 // モデルの読み込み
 //fbxファイルの読み込み
 // async 
-function humanAdd(add_contents, add_src,x,y,z) {
+const numModelToAdd = 3;
+function modelAdd(add_contents, add_src,x,y,z) {
   $(add_contents).on("click", async function () {
+    for (let i = 0; i < numModelToAdd; i++) {
     // GLTF形式のモデルデータを読み込む
     const loader = new THREE.GLTFLoader();
     let mixer;
@@ -330,13 +333,14 @@ function humanAdd(add_contents, add_src,x,y,z) {
  
         renderer.render(scene, camera);
         requestAnimationFrame(animate);
+        }
     }
     animate();
   });
 }
 
-humanAdd("#human_add","../3d/human.glb",0.01,0.01,0.01); //人間追加
-humanAdd("#human_add","../3d/pokemon_color_1.glb",5,5,5); //フシギダネ追加
+modelAdd("#human_add","../3d/human.glb",0.01,0.01,0.01); //人間追加
+modelAdd("#Bulbasaur_add","../3d/pokemon_color_1.glb",5,5,5); //フシギダネ追加
 
 // ランダムにボタンを押すたびに人を追加
 // function humanAdd() {

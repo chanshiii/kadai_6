@@ -19,16 +19,16 @@
             <p>supported by<br> Chanshi_Chanssie</p>
         </div> -->
         <div class="header_title" >
-            <a href="../a-frame/a-frame.html"><p>supported by<br> Chanshi_Chanssie</p></a>
+            <a href="./a-frame/a-frame.html"><p>supported by<br> Chanshi_Chanssie</p></a>
         </div>
     </header>
 
     <main>
         <div class="title_contents">
             <div class="title_text animation">
-                <p class="title_sub_1">~カメラマンのがっこう~</p>
+                <p class="title_sub_1" id="title_sub_1">~カメラマンのがっこう~</p>
                 <h1 class="title_main">photo school</h1>
-                <p class="title_sub_2">ふぉとすく</p>
+                <p class="title_sub_2" id="title_sub_2">ふぉとすく</p>
             </div>
             <div class="title_img animation">
                 <img src="./icon/title_contens.png" alt="">
@@ -37,7 +37,7 @@
         
         <!-- aリンクを使用して入学するを囲んだ場合、JSで「再生」→「ページ移行」と制御しても先にページ移行が行われ、クリック時に音がなる前にぺージが移動してしまう -->
         <div class="start-button" id="start-button" onclick="audio()">
-            入学する
+            <p>入学する</p>
         <audio id="start-btn">
             <source src="../photoschool/audio/start-button_1.wav" type="audio/mpeg">
             <source src="../photoschool/audio/start-button_2.wav" type="audio/mpeg">
@@ -110,6 +110,24 @@ function audio() {
         window.location.href = './photo_game/main.html';
     }, 1000); //指定した再生時間 
 }
+/*#000000形式でランダム色を返すプログラム
+=======================================================================*/
+function getRumClr(){
+    // 0～9、a～fの16進数の配列を用意
+	var clrArr = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
+	var clr = '#';
+	for(i=0; i < 6; i++){ //「for」で6回繰り返して「#000000」の形にする。
+		clr = clr + clrArr[Math.floor( Math.random() * 16)];
+	}
+	return clr;
+}
+
+$(function(){
+	jQuery('p').css({'color':getRumClr()});
+	jQuery('#title_sub_1').css({'color':getRumClr()});
+	jQuery('#title_sub_2').css({'color':getRumClr()});
+	jQuery('h1').css({'color':getRumClr()});
+});
     </script>
 </body>
 </html>

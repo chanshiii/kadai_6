@@ -4,21 +4,35 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="~カメラマンのがっこう~photo school-ふぉとすく">
+<meta property="og:title" content="photo school">
+<link rel="shortcut icon" href="./icon/Photo and Video coverage.png">
+<link rel="apple-touch-icon-precomposed" href="./icon/Photo and Video coverage.png">
 <title>Firebase_version9_login</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="./login.css">
 </head>
 
 <body>
 
 
 <!-- LOGINボタン -->
-<div class="flex justify-center items-center w-full h-screen bg-blue-300">
-    <button id="login" class="w-32 h-16 text-orange-200 bg-gray-700 hover:text-white">LOGIN</button>
+<div class="login_continer">
+    <div class="title_contents">
+            <div class="title_text animation">
+                <p class="title_sub_1" id="title_sub_1">~カメラマンのがっこう~</p>
+                <h1 class="title_main">photo school</h1>
+                <p class="title_sub_2" id="title_sub_2">ふぉとすく</p>
+            </div>
+            <p class="login_auth">Login authentication</p>
+    </div>
+    <div class="login">
+        <a id="login" class="login_btn">LOGIN</a>
+    </div>
 </div>
 <!--/LOGINボタン -->
 
 
-<!-- JQuery --><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><!--/JQuery -->
+<!-- JQuery --><script src="./js/jquery-3.6.0.min.js"></script><!-- JQuery -->
 <script type="module">
 //###############################################
 // 必要なFirebaseライブラリを読み込み
@@ -53,6 +67,7 @@ const auth = getAuth();
 //###############################################
 //Login処理
 //###############################################
+
 $("#login").on("click",function(){
     //Google認証完了後の処理
     signInWithPopup(auth, provider).then((result) => {

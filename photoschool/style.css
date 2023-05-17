@@ -54,10 +54,12 @@ img {
 
 .title_sub_1 {
   padding: 0 0 30px;
+  font-weight: bold;
 }
 
-.title_sub_1 {
+.title_sub_2 {
   margin: 0;
+  font-weight: bold;
 }
 
 .title_img {
@@ -88,6 +90,7 @@ img {
 .start-button {
   width: 200px;
   font-size: 2.2rem;
+  font-weight: bold;
   text-align: center;
   padding: 10px 60px;
   border-radius:30px;
@@ -101,6 +104,10 @@ img {
 .start-button a{
   text-decoration: none;
   color: #000000;
+}
+
+.start-button p{
+  margin: 0;
 }
 
 .start-button:hover{

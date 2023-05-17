@@ -42,6 +42,23 @@
     <!-- <img src="../three.js-dev/examples/fonts/helvetiker_regular.typeface.json" alt=""> -->
     <script>
       $("#title").fadeOut(3000);
+
+      /*#000000形式でランダム色を返すプログラム
+=======================================================================*/
+function getRumClr(){
+    // 0～9、a～fの16進数の配列を用意
+	var clrArr = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
+	var clr = '#';
+	for(i=0; i < 6; i++){ //「for」で6回繰り返して「#000000」の形にする。
+		clr = clr + clrArr[Math.floor( Math.random() * 16)];
+	}
+	return clr;
+}
+
+$(function(){
+	jQuery('h1').css({'color':getRumClr()});
+	jQuery('h3').css({'color':getRumClr()});
+});
     </script>
   </body>
 </html>
